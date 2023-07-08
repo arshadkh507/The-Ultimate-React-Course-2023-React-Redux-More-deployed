@@ -2,75 +2,219 @@
  * Color scheme                                                 *
  *--------------------------------------------------------------*/
 :root {
-  --primary-color: #1976d2;
-  --secondary-color: #ffc107;
-  --error-color: #ff5252;
-  --background-color: #f5f5f5;
-  --surface-color: #ffffff;
-  --on-primary-color: #ffffff;
-  --on-secondary-color: #000000;
-  --on-background-color: #000000;
-  --on-surface-color: #000000;
-  --ff-roboto: "Roboto", sans-serif;
-  --ff-raleway: "Raleway", sans-serif;
-  --ff-montserrat: "Montserrat", sans-serif;
+  /* Font-family */
+  --primary-font: "Roboto", sans-serif;
+  --code-font: "Fira Code", monospace;
+
+  /* Light mode colors */
+  --light-background: #f5f5f5;
+  --light-primary-text: #212121;
+  --light-secondary-text: #757575;
+  --light-accent: #61dafb;
+  --light-code-block-background: #e8e8e8;
+
+  /* Dark mode colors */
+  --dark-background: #1e1e1e;
+  --dark-primary-text: #e0e0e0;
+  --dark-secondary-text: #a2a2a2;
+  --dark-accent: #61dafb;
+  --dark-code-block-background: #2c2c2c;
 }
 
-/* Light theme */
-.light {
-  --primary-color: lighten(var(--primary-color), 15%);
-  --secondary-color: lighten(var(--secondary-color), 15%);
-  --error-color: lighten(var(--error-color), 15%);
-  --background-color: #ffffff;
-  --surface-color: #f5f5f5;
-  --on-primary-color: #000000;
-  --on-secondary-color: #ffffff;
-  --on-background-color: #000000;
-  --on-surface-color: #000000;
+body.light {
+  background-color: var(--light-background);
+  color: var(--light-primary-text);
 }
 
-/* Dark theme */
-.dark {
-  --primary-color: darken(var(--primary-color), 15%);
-  --secondary-color: darken(var(--secondary-color), 15%);
-  --error-color: darken(var(--error-color), 15%);
-  --background-color: #121212;
-  --surface-color: #1e1e1e;
-  --on-primary-color: #ffffff;
-  --on-secondary-color: #000000;
-  --on-background-color: #ffffff;
-  --on-surface-color: #ffffff;
-}
-
-/*--------------------------------------------------------------*
- * General style                                                 *
- *--------------------------------------------------------------*/
-
-html,
-body {
-  margin: 0;
-  padding: 0;
+body.dark {
+  background-color: var(--dark-background);
+  color: var(--dark-primary-text);
 }
 
 body {
-  background: var(--background-color);
+  font-family: var(--primary-font);
 }
 
-* {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+code,
+pre {
+  font-family: var(--code-font);
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+}
+
+p {
+  color: inherit;
 }
 
 a {
+  color: var(--light-accent);
   text-decoration: none;
+}
+
+a:hover {
+  color: #49b5d2;
+  text-decoration: underline;
+}
+
+ul,
+ol {
+  color: inherit;
+}
+
+button {
+  background-color: var(--light-accent);
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #49b5d2;
+}
+
+button:active {
+  background-color: #3a9db2;
+}
+
+/* Code Blocks */
+pre.light {
+  background-color: var(--light-code-block-background);
+}
+
+pre.dark {
+  background-color: var(--dark-code-block-background);
+}
+
+pre {
+  color: inherit;
+  overflow-x: auto;
+  padding: 16px;
+}
+
+/* Box-shadow */
+.box-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add this rule for dark mode */
+.dark .box-shadow {
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  color: inherit;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid currentColor;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+table th {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+}
+
+/* Forms */
+form {
+  color: inherit;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 8px;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--light-accent);
+  outline: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Images */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--light-accent);
+  color: inherit;
+  margin: 16px 0;
+  padding: 0 16px;
+}
+
+/* Horizontal rule */
+hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 16px 0;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.pt-0 {
+  padding-top: 0;
+}
+.pb-0 {
+  padding-bottom: 0;
 }
 
 /*--------------------------------------------------------------*
@@ -87,7 +231,7 @@ a {
 }
 
 .sidebar {
-  width: 250px;
+  width: 350px;
   height: 100vh;
   background-color: var(--surface-color);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -107,7 +251,7 @@ a {
 .main_container {
   flex: 1;
   background-color: var(--background-color);
-  margin-left: 250px;
+  margin-left: 350px;
   padding: 20px;
 }
 
@@ -172,7 +316,7 @@ a {
   .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -350px;
     width: 250px;
     height: 100vh;
     background-color: #f0f0f0;
@@ -397,7 +541,7 @@ a {
  *--------------------------------------------------------------*/
 
 .sections-container {
-  margin-left: 250px;
+  margin-left: 350px;
   background-color: var(--background-color);
   padding: 20px;
 }
